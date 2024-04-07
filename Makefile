@@ -6,23 +6,23 @@
 #    By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/03/19 22:22:29 by ramzerk          ###   ########.fr        #
+#    Updated: 2024/03/27 07:59:33 by ramzerk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_FILES	=	main.c \
-				parsing.c \
+			#	parsing.c \
 				checking.c \
 
-CFLAGS 		=	-Wall -Wextra -Werror
+CFLAGS 		=	-Wall -Wextra  #-Werror
 NAME		=	so_long
 NAME_MAC	=	so_long_MAC
 LIBX		=	minilibx-linux/libmlx_Linux.a
 LIBX_MAC	=	minilibx-linux/libmlx_Darwin.a
 # LIBFT		=	libft/libft.a
 SRC_DIR		=	src
-# OBJ_DIR		=	obj
-INCLUDES	=	inc
+OBJ_DIR		=	obj
+INCLUDES	=	include
 SRC 		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
@@ -41,7 +41,7 @@ debug: $(OBJS) $(LIBX) $(LIBFT)
 	cc $(CFLAGS) -g3 -gdwarf-4 -L/opt/homebrew/Cellar/libxext/1.3.6/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11 -Lminilibx-linux/ -lmlx $^ -o $(NAME)_debug
 
 $(NAME_MAC): $(OBJS) $(LIBX_MAC) $(LIBFT)
-	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.6/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11  -Lminilibx-linux/ -lmlx $^ -o $@
+	 cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.6/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11  -Lminilibx-linux/ -lmlx $^ -o $@
 
 $(NAME): $(OBJS) $(LIBX) $(LIBFT)
 	cc $(CFLAGS) -lXext -lX11 -Lminilibx-linux/ -lmlx $^ -o $@
@@ -53,7 +53,7 @@ $(LIBX):
 	make -C minilibx-linux/
 
 # $(LIBFT):
-# 	make -C libft/
+# make -C libft/
 
 $(OBJ_DIR):
 	mkdir obj
