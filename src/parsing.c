@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/03/28 17:42:53 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/08 17:18:59 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,10 @@ int	size_checking(char **str)
 		return (0);
 }
 
-int	is_map_valid(**str)
+int	is_map_valid(char **str)
 {
+	if (!str || !*str)
+		return 0;
 	if (!size_checking)
 		return (0);
 	if (!character_checker)
@@ -135,6 +137,7 @@ int	is_map_valid(**str)
 
 int	main(void)
 {
+	
 	char	*str[] = {"1111111111111", "1000000000001", "1000000000001",
 			"1000000000001", "1000000000001", "1000000000001", "1111111111111",
 			NULL};

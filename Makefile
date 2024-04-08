@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+         #
+#    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/03/27 07:59:33 by ramzerk          ###   ########.fr        #
+#    Updated: 2024/04/08 16:49:46 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBX_MAC	=	minilibx-linux/libmlx_Darwin.a
 # LIBFT		=	libft/libft.a
 SRC_DIR		=	src
 OBJ_DIR		=	obj
-INCLUDES	=	include
+INCLUDES	=	inc
 SRC 		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
