@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/09 08:03:36 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/09 09:05:12 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,15 @@ typedef struct s_game
 	int			steps;
 	int			fd;
 }				t_game;
+
+typedef struct s_mlx_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}			t_mlx_data;
+
+
+// int	ft_dstrlen(char **str);
+// int	ft_strlen(char *str);
 
 #endif
