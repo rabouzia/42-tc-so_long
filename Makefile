@@ -3,16 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
+#    By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/08 16:49:46 by rabouzia         ###   ########.fr        #
+#    Updated: 2024/04/09 11:10:15 by ramzerk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_FILES	=	main.c \
+				get_next_line.c \
+				get_next_line_utils.c \
+				parsing.c \
 			#	parsing.c \
-				checking.c \
+			#	checking.c \
 
 CFLAGS 		=	-Wall -Wextra  #-Werror
 NAME		=	so_long

@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/09 09:05:12 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/09 11:11:42 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../minilibx-linux/mlx.h"
 # include <math.h>
+# include "get_next_line.h"
 # include <stddef.h>
 #include <X11/keysym.h>
 # include <stdio.h>
@@ -70,7 +71,8 @@ typedef struct s_mlx_data
 }			t_mlx_data;
 
 
-// int	ft_dstrlen(char **str);
+int	ft_dstrlen(char **str);
 // int	ft_strlen(char *str);
+int	is_map_valid(t_game *map);
 
 #endif
