@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/08 16:24:49 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/09 08:03:36 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ typedef struct s_map_cpt
 /*Structure containing all the sprites ready for display*/
 typedef struct s_sprite
 {
-	void		*player;
-	void		*exit;
-	void		*collectible;
-	void		*floor;
-	void		*wall;
+	void		*link; // P
+	void		*exit; // E
+	void		*ruby; // C
+	void		*floor; // 0
+	void		*wall; // 1
 }				t_sprite;
 
 /*This is the main structure which joins all 
