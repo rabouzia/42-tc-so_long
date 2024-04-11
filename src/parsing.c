@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/09 11:13:40 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/09 11:38:12 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ int	character_checker(t_game *m)
 		{
 			if (m->map[i][j] == '0' || m->map[i][j] == '1' || m->map[i][j] == 'C')
 				j++;
-			if (m->map[i][j] == 'E' || m->map[i][j] == 'P')
+			else if (m->map[i][j] == 'E' || m->map[i][j] == 'P')
 				j++;
 			else
+			{
+				printf("%c = ?\n", m->map[i][j]);
 				return (0);
+			}
 		}
 		i++;
 	}
@@ -90,9 +93,10 @@ int	size_checking(t_game *m)
 	int	y;
 	int	res;
 	int	i;
-	res = 0;
 	x = ft_strlen(m->map[0]);
 	y = ft_dstrlen(m->map);
+	
+	res = 0;
 	i = 0;
 	while (m->map[i] != NULL)
 	{
@@ -110,13 +114,25 @@ int	is_map_valid(t_game *m)
 	if (!m->map)
 		return 0;
 	if (!size_checking(m))
+	{
+		perror("size");
 		return (0);
+	}
 	if (!character_checker(m))
+	{
+		perror("character");
 		return (0);
+	}
 	if (!wall_check_up_down(m))
+	{
+		perror ("wall up down");
 		return (0);
+	}
 	if (!wall_check_side(m))
+	{
+		perror("wall side");
 		return (0);
+	}
 	// if (!path_checking)
 	// 	return (0);
 	return (1);

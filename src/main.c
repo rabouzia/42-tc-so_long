@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:15 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/09 11:14:21 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/11 14:36:11 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void read_line(t_game *data, t_sprite *img)
 		j = 0;
 		while (data->map[i][j])
 		{
-		
+			
 			if (data->map[i][j] == 'P')	
 				mlx_put_image_to_window(data->mlx, data->win, img->link, j * 64, i * 64 );
 			else if (data->map[i][j] == 'E')	
@@ -85,7 +85,7 @@ int win_create(t_game *data, t_map_cpt *map)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (MLX_ERROR);
-	data->win = mlx_new_window(data->mlx, map->lines , map->columns,"The Legend Of Zelda");
+	data->win = mlx_new_window(data->mlx, map->columns , map->lines,"The Legend Of Zelda");
 	if (data->win == NULL)
 	{
 		mlx_destroy_display(data->mlx);
@@ -94,6 +94,11 @@ int win_create(t_game *data, t_map_cpt *map)
 	}
 	return 1;
 }
+
+// void init_move(t_game *m, t_sprite *link, t_pos *pos)
+// {
+// 	if ()
+// }
 
 void	read_ber(t_game *map, t_map_cpt *s , char *ber)
 {
@@ -108,7 +113,7 @@ void	read_ber(t_game *map, t_map_cpt *s , char *ber)
             break;
 		i++;
 	}
-	s->lines = 64 * ft_strlen(map->map[0]);
+	s->lines = 64 * (ft_strlen(map->map[0]) - 1);
 	s->columns = 64 * ft_dstrlen(map->map);
 }
 
@@ -117,16 +122,18 @@ int main(int ac, char **av)
 	t_game data;
 	t_sprite img;
 	t_map_cpt map;
+	// t_pos  	pos;
 	
 	
 	if (ac != 2)
 		return 0;
 	read_ber(&data, &map, av[1]);
-	if (!is_map_valid(&data))
-	{
-		perror("parsing err");
-		return 0;
-	}
+	
+	// if (!is_map_valid(&data))
+	// {
+	// 	// perror("parsing err");
+	// 	return 0;
+	// }
 	win_create(&data, &map);
 	img_init(&img, &data);
 	read_line(&data, &img);

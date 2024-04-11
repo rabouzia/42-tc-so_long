@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/09 11:11:42 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/10 22:00:44 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct s_pos
 	int			y;
 }				t_pos;
 
-/*Simple structure gathering the counts I'll perform on the map*/
-
 typedef struct s_map_cpt
 {
 	int			player;
@@ -39,7 +37,6 @@ typedef struct s_map_cpt
 	int			columns;
 }				t_map_cpt;
 
-/*Structure containing all the sprites ready for display*/
 typedef struct s_sprite
 {
 	void		*link; // P
@@ -48,9 +45,6 @@ typedef struct s_sprite
 	void		*floor; // 0
 	void		*wall; // 1
 }				t_sprite;
-
-/*This is the main structure which joins all 
-the essentials components of the working game*/
 
 typedef struct s_game
 {
@@ -70,9 +64,10 @@ typedef struct s_mlx_data
 	void	*win_ptr;
 }			t_mlx_data;
 
-
+//------------------- mandatory--------------------
 int	ft_dstrlen(char **str);
 // int	ft_strlen(char *str);
 int	is_map_valid(t_game *map);
+//------------------- bonus -----------------------
 
 #endif
