@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+         #
+#    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/09 11:10:15 by ramzerk          ###   ########.fr        #
+#    Updated: 2024/04/12 19:48:49 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRC_FILES	=	main.c \
 				get_next_line.c \
 				get_next_line_utils.c \
 				parsing.c \
-			#	parsing.c \
+				printing.c \
 			#	checking.c \
 
 CFLAGS 		=	-Wall -Wextra  #-Werror
