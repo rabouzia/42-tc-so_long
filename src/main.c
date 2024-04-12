@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:15 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/11 17:42:27 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:02:01 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	img_get(t_sprite *img, t_game *data)
 
 // j -> x
 // i -> y
-void	read_line(t_game *data, t_sprite *img, t_c *c, t_pos *p)
+void	img_init(t_game *data, t_sprite *img, t_c *c, t_pos *p)
 {
 	c->i = 0;
 	while (data->map[c->i])
@@ -164,7 +164,7 @@ int	main(int ac, char **av)
 	win_create(&data, &map);
 	mlx_key_hook(data.win, handle_input, &data);
 	
-	read_line(&data, &img, &c, &pos);
+	img_init(&data, &img, &c, &pos);
 	mlx_key_hook(data.win, handle_input, &data);
 	mlx_loop(data.mlx);
 }
