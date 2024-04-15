@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/15 08:37:17 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/15 22:13:56 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <unistd.h>
 
 # define MLX_ERROR 1
-# define UP	119
-# define DOWN 115
+# define UP	115
+# define DOWN 119
 # define LEFT 97
 # define RIGHT 100
 

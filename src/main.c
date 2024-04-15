@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:15 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/15 21:32:57 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/15 22:12:14 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void printtab(char **d)
 
 
 int manage_l_r(int key, t_game *d)
-{	// a et d
-	// check_path si ya un mur;
-	// si check_path bouger link et re init sa pos
+{
 	int i;
 	int j;
 	
@@ -71,14 +69,42 @@ int manage_l_r(int key, t_game *d)
 			d->pos.x += 1;
 			d->map[i][j+1] = 'P';
 			put_link(d);
-			// j--;
 			d->map[i][j] = '0';
-			printtab(d->map);
-			// printf("the current char is %c\n",d->map[i][j]);
-			// printf("link pos are x = %d, y = %d\n",d->pos.x,d->pos.y);
-			put_img(d, j, i);
+			put_img(d, i, j);
 	}
-	printf("The %d key has been pressed\n\n", key);
+	if (key == LEFT && d->map[i][j - 1] == '0')
+	{
+			d->pos.x -= 1;
+			d->map[i][j - 1] = 'P';
+			put_link(d);
+			d->map[i][j] = '0';
+			put_img(d, i, j);
+	}
+	return 1;
+}
+int manage_u_p(int key, t_game *d)
+{
+	int i;
+	int j;
+	
+	i = d->pos.y;
+	j = d->pos.x;
+	if (key == UP && d->map[i + 1][j] == '0')
+	{
+			d->pos.y += 1;
+			d->map[i + 1][j] = 'P';
+			put_link(d);
+			d->map[i][j] = '0';
+			put_img(d, i, j);
+	}
+	if (key == DOWN && d->map[i - 1][j] == '0')
+	{
+			d->pos.y -= 1;
+			d->map[i- 1][j] = 'P';
+			put_link(d);
+			d->map[i][j] = '0';
+			put_img(d, i, j);
+	}
 	return 1;
 }
 
@@ -96,6 +122,7 @@ int	input(int key,t_game *data)
 		exit(1);
 	}
 	manage_l_r(key, data);
+	manage_u_p(key, data);
 	// printf("The %d key has been pressed\n\n", key);
 	return 1;
 }
