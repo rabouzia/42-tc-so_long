@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/12 19:46:14 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/15 21:28:53 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	win_create(t_game *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (MLX_ERROR);
-	data->win = mlx_new_window(data->mlx, data->count.columns,
-			data->count.lines, "The Legend Of Zelda");
+	data->win = mlx_new_window(data->mlx, data->count.lines,
+			data->count.columns, "The Legend Of Zelda");
 	if (data->win == NULL)
 	{
 		mlx_destroy_display(data->mlx);
@@ -54,29 +54,31 @@ void	put_link(t_game *d)
 		* 64);
 }
 
-void	put_img(t_game *data, int i, int j)
+// void put_floor (t_game *d, int i, int j)
+// {
+// 	mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
+// }
+
+void	put_img(t_game *d, int i, int j)
 {
-	if (data->map[i][j] == 'E')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.exit, j * 64, i
-			* 64);
-	else if (data->map[i][j] == 'C')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.ruby, j * 64, i
-			* 64);
-	else if (data->map[i][j] == '0')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.floor, j * 64, i
-			* 64);
-	else if (data->map[i][j] == '1')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.wall, j * 64, i
-			* 64);
-	else if (data->map[i][j] == 'P')
+	if (d->map[i][j] == 'E')
+		mlx_put_image_to_window(d->mlx, d->win, d->img.exit, j * 64, i * 64);
+	else if (d->map[i][j] == 'C')
+		mlx_put_image_to_window(d->mlx, d->win, d->img.ruby, j * 64, i * 64);
+	else if (d->map[i][j] == '0')
+		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
+	else if (d->map[i][j] == '1')
+		mlx_put_image_to_window(d->mlx, d->win, d->img.wall, j * 64, i * 64);
+	else if (d->map[i][j] == 'P')
 	{
-		data->pos.x = j;
-		data->pos.y = i;
-		mlx_put_image_to_window(data->mlx, data->win, data->img.floor, j * 64, i
+		d->pos.x = j;
+		d->pos.y = i;
+		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i
 			* 64);
-		put_link(data);
+		put_link(d);
 	}
 }
+
 
 void	init_img(t_game *d)
 {

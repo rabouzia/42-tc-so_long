@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/12 19:56:29 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/15 08:37:17 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,11 @@ typedef struct s_pos
 	int			y;
 }				t_pos;
 
-typedef struct s_c
-{
-	int			i;
-	int			j;
-
-}				t_c;
-
 typedef struct s_map_cpt
 {
 	int			player;
 	int			exit;
-	int			collectible;
+	int			ruby;
 	int			lines;
 	int			columns;
 }				t_map_cpt;
@@ -71,12 +64,6 @@ typedef struct s_game
 	int			steps;
 	int			fd;
 }				t_game;
-
-typedef struct s_mlx_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-}				t_mlx_data;
 
 //------------------- mandatory--------------------
 int				ft_dstrlen(char **str);
