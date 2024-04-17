@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/17 16:46:13 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:24:53 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int	size_checking(t_game *m)
 	{
 		if (x != ft_strlen(m->map[i]))
 			return (0);
-		// res += ft_strlen(m->map[i]);
 		i++;
 	}
 	return (1);
@@ -153,7 +152,7 @@ int	is_map_valid(t_game *m)
 
 void	flood_fill(char ***map, int x, int y, t_game *game)
 {
-	if (x >= game->counter.lines || x < 0 || y >= game->counter.columns
+	if (x >= game->count.lines || x < 0 || y >= game->count.columns
 || y < 0)
 		return ;
 	if ((*map)[x][y] == '1')
