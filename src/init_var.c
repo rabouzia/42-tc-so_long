@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:05:14 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/17 10:09:25 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:04:18 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int ft_strchr_count(char **str, char c)
 	return k;
 }
 
+
+
 void	read_ber(t_game *data, char *ber)
 {
 	int	fd;
 	int	i;
-
 	fd = open(ber, O_RDONLY, 0664);
 	i = 0;
 	data->map = malloc(1000);

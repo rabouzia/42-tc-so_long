@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/17 11:29:46 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:32:31 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int ft_strchr_count(char **str, char c);
 void	read_ber(t_game *data, char *ber);
 void init_var(t_game *d);
 
-
+void printtab(char **d);
 //------------------- bonus -----------------------
 
 #endif

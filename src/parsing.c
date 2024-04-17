@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/09 11:38:12 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:30:50 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	ft_dstrlen(char **str)
 	i = 0;
 	while (str[i])
 		i++;
+	
 	return (i);
 }
 
@@ -60,27 +61,40 @@ int	wall_check_side(t_game *m)
 	return (1);
 }
 
+int is_good(char c)
+{
+	if (c == '1')
+		return 1;
+	if (c == '0')
+		return 1;
+	if (c == 'P')
+		return 1;
+	if (c == 'C')
+		return 1;
+	if (c == 'E')
+		return 1;
+	if (c == 'M')
+		return 1;
+	return 0;
+}
+
 int	character_checker(t_game *m)
 {
 	int	i;
 	int	j;
 
-	j = 0;
 	i = 0;
-	while (m->map[i][j])
+	while (m->map[i])
 	{
 		j = 0;
 		while (m->map[i][j])
 		{
-			if (m->map[i][j] == '0' || m->map[i][j] == '1' || m->map[i][j] == 'C')
-				j++;
-			else if (m->map[i][j] == 'E' || m->map[i][j] == 'P')
-				j++;
-			else
+			if (!is_good(m->map[i][j]))
 			{
-				printf("%c = ?\n", m->map[i][j]);
+				printf("<<quoiii%c>>",m->map[i][j]);
 				return (0);
 			}
+			j++;
 		}
 		i++;
 	}
@@ -93,20 +107,24 @@ int	size_checking(t_game *m)
 	int	y;
 	int	res;
 	int	i;
-	x = ft_strlen(m->map[0]);
-	y = ft_dstrlen(m->map);
 	
+	x = ft_strlen(m->map[0]) ;
+	y = ft_dstrlen(m->map);	
 	res = 0;
 	i = 0;
 	while (m->map[i] != NULL)
 	{
-		res += ft_strlen(m->map[i]);
+		if (x != ft_strlen(m->map[i]))
+			return (0);
+		// res += ft_strlen(m->map[i]);
 		i++;
 	}
-	if (res == x * y)
-		return (1);
-	else
-		return (0);
+	return (1);
+	// res++;
+	// if (res == x * y )
+	// 	return (1);
+	// else
+	// 	return (0);
 }
 
 int	is_map_valid(t_game *m)
@@ -120,7 +138,7 @@ int	is_map_valid(t_game *m)
 	}
 	if (!character_checker(m))
 	{
-		perror("character");
+		printf("character");
 		return (0);
 	}
 	if (!wall_check_up_down(m))

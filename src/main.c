@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:15 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/17 11:58:29 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:51:18 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	win_create(&data);
 	img_get(&data);
 	init_img(&data);
-	printtab(data.map);
+	// printtab(data.map);
 	mlx_key_hook(data.win, input, &data);
 	mlx_loop(data.mlx);
 }
