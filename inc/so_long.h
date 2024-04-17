@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/15 22:13:56 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 11:29:46 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ typedef struct s_game
 
 //------------------- mandatory--------------------
 int				ft_dstrlen(char **str);
-// int	ft_strlen(char *str);
 int				is_map_valid(t_game *map);
+int	input(int key,t_game *data);
 
 //---------- printing -----------
 int				win_create(t_game *data);
@@ -76,7 +76,11 @@ int				img_get(t_game *data);
 void			put_link(t_game *d);
 void			put_img(t_game *data, int i, int j);
 void			init_img(t_game *d);
-//
+//----------- init_var -----------
+int ft_strchr_count(char **str, char c);
+void	read_ber(t_game *data, char *ber);
+void init_var(t_game *d);
+
 
 //------------------- bonus -----------------------
 

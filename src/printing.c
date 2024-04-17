@@ -6,7 +6,7 @@
 /*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/15 21:28:53 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 11:41:56 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ void	put_link(t_game *d)
 		* 64);
 }
 
-// void put_floor (t_game *d, int i, int j)
-// {
-// 	mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
-// }
-
 void	put_img(t_game *d, int i, int j)
 {
 	if (d->map[i][j] == 'E')
@@ -73,8 +68,6 @@ void	put_img(t_game *d, int i, int j)
 	{
 		d->pos.x = j;
 		d->pos.y = i;
-		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i
-			* 64);
 		put_link(d);
 	}
 }
