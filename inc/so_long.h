@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/17 14:32:31 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:24:02 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 # include <unistd.h>
 
 # define MLX_ERROR 1
-# define UP	115
+# define UP 115
 # define DOWN 119
 # define LEFT 97
 # define RIGHT 100
-
 
 typedef struct s_pos
 {
@@ -68,7 +67,7 @@ typedef struct s_game
 //------------------- mandatory--------------------
 int				ft_dstrlen(char **str);
 int				is_map_valid(t_game *map);
-int	input(int key,t_game *data);
+int				input(int key, t_game *data);
 
 //---------- printing -----------
 int				win_create(t_game *data);
@@ -77,11 +76,14 @@ void			put_link(t_game *d);
 void			put_img(t_game *data, int i, int j);
 void			init_img(t_game *d);
 //----------- init_var -----------
-int ft_strchr_count(char **str, char c);
-void	read_ber(t_game *data, char *ber);
-void init_var(t_game *d);
+int				ft_strchr_count(char **str, char c);
+void			read_ber(t_game *data, char *ber);
+void			init_var(t_game *d);
+int				ft_strchr_count(char **str, char c);
+int				tab_size(char **tab);
+void			free_img(t_game *d);
 
-void printtab(char **d);
+void			printtab(char **d);
 //------------------- bonus -----------------------
 
 #endif

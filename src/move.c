@@ -3,22 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:41:53 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/17 14:14:18 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:32:18 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void quit_game(t_game *d)
-{
-	mlx_destroy_window(d->mlx, d->win);
-	mlx_destroy_display(d->mlx);
-	free(d->mlx);
-	exit(1);
-}
 
 int move_check(t_game *d, int i, int j)
 {
