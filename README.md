@@ -1,11 +1,13 @@
 USAGE :
 
 MAC :
+     
      $> make mac -j
      $> ./so_long_MAC ./map/***.ber
 
 
 Linux :
+     
      $> make -j     
      $> ./so_long ./map/***.ber
 
