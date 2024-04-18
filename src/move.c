@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:41:53 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 12:33:44 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:31:26 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	input(int key, t_game *data)
 
 	n = 0;
 	if (key == XK_Escape)
-		quit_game(data);
+		quit_esc(data);
 	if (key == RIGHT)
 		n = manage_right_left(data, 1);
 	if (key == LEFT)
@@ -106,5 +106,8 @@ int	input(int key, t_game *data)
 		n = manage_up_down(data, 0);
 	if (n)
 		init_img(data);
+	data->steps++;
+	mlx_string_put(data->mlx, data->win, 64, 64, 0x00FF00 , ft_);
+	printf("%d pas\n",data->steps);
 	return (1);
 }

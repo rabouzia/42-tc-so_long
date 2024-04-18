@@ -6,31 +6,63 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:21:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 11:26:35 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:12:51 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void free_img(t_game *d)
+void	free_map(char **map)
 {
-    free(d->img.link.down);
-    free(d->img.link.up);
-    free(d->img.link.left);
-    free(d->img.link.right);
-    free(d->img.link.ruby);
-    free(d->img.ruby);
-    free(d->img.exit);
-    free(d->img.floor);
-    free(d->img.wall);
-    //free(d->img.monster);
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
-void quit_game(t_game *d)
+void	free_img(t_game *d)
 {
-	mlx_destroy_window(d->mlx, d->win);
-	mlx_destroy_display(d->mlx);
+	mlx_destroy_image(d->mlx, d->img.link.down);
+	mlx_destroy_image(d->mlx, d->img.link.up);
+	mlx_destroy_image(d->mlx, d->img.link.left);
+	mlx_destroy_image(d->mlx, d->img.link.right);
+	mlx_destroy_image(d->mlx, d->img.link.ruby);
+	mlx_destroy_image(d->mlx, d->img.ruby);
+	mlx_destroy_image(d->mlx, d->img.exit);
+	mlx_destroy_image(d->mlx, d->img.floor);
+	mlx_destroy_image(d->mlx, d->img.wall);
+	mlx_destroy_image(d->mlx, d->img.monster);
+}
+
+void	quit_esc(t_game *d)
+{
 	free_img(d);
-	free(d->mlx);
+	if (d->win)
+		mlx_destroy_window(d->mlx, d->win);
+	if (d->mlx)
+	{
+		mlx_destroy_display((*d).mlx);
+		free((*d).mlx);
+	}
+	free_map(d->map);
 	exit(1);
+}
+int	quit_click(t_game *d)
+{
+	free_img(d);
+	if (d->win)
+		mlx_destroy_window(d->mlx, d->win);
+	if (d->mlx)
+	{
+		mlx_destroy_display((*d).mlx);
+		free((*d).mlx);
+	}
+	free_map(d->map);
+	exit(1);
+	return (0);
 }

@@ -6,13 +6,11 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 11:05:44 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:36:09 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 
 int	wall_check_up_down(t_game *m)
 {
@@ -48,23 +46,6 @@ int	wall_check_side(t_game *m)
 		i++;
 	}
 	return (1);
-}
-
-int	is_good(char c)
-{
-	if (c == '1')
-		return (1);
-	if (c == '0')
-		return (1);
-	if (c == 'P')
-		return (1);
-	if (c == 'C')
-		return (1);
-	if (c == 'E')
-		return (1);
-	if (c == 'M')
-		return (1);
-	return (0);
 }
 
 int	character_checker(t_game *m)
@@ -109,15 +90,18 @@ int	size_checking(t_game *m)
 
 int	is_map_valid(t_game *m)
 {
-	if (!m->map)
+	if (!m->map || !(*m->map))
+	{
+		free(m->map);
 		return (ft_putstr_fd("Error\n Empty map", 1), 0);
-	if (!size_checking(m))
+	}
+	if (!size_checking(m)) // leak
 		return (ft_putstr_fd("Error\nWrong size", 1), 0);
-	if (!character_checker(m))
+	if (!character_checker(m)) // leak
 		return (ft_putstr_fd("Error\nWrong char", 1), 0);
-	if (!wall_check_up_down(m))
+	if (!wall_check_up_down(m)) // leak
 		return (ft_putstr_fd("Error\nWrong char up and down", 1), 0);
-	if (!wall_check_side(m))
+	if (!wall_check_side(m)) // leak
 		return (ft_putstr_fd("Error\nWrong side char", 1), 0);
 	// if (!check_path(m))
 	// 	return (ft_putstr_fd("Error\nNo way bro o_o", 1), 0);

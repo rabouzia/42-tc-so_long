@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:05:14 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 12:23:12 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:25:59 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	init_var(t_game *d)
 {
 	d->pos.x = 0;
 	d->pos.y = 0;
-	d->steps = 0;
+	d->steps = -1;
 	d->fd = 0;
 	d->sp = 0;
 	d->count.ruby = ft_strchr_count(d->map, 'C');
@@ -28,12 +28,20 @@ int	init_var(t_game *d)
 		return (ft_putstr_fd("Error\n Not enough or Too much E or P\n", 1), 0);
 	return (1);
 }
+int	check_extension(char *ber)
+{
+	if (ft_strstr(ber, ".ber"))
+		return (0);
+	return (1);
+}
 
-void	read_ber(t_game *data, char *ber)
+int	read_ber(t_game *data, char *ber)
 {
 	int		i;
 	char	*line;
 
+	if (!check_extension(ber))
+		return (ft_putstr_fd("Error\nWrong file extension", 1), 0);
 	i = 0;
 	data->fd = open(ber, O_RDONLY, 0664);
 	data->map = malloc(1000 * sizeof(char *));
@@ -46,4 +54,5 @@ void	read_ber(t_game *data, char *ber)
 			break ;
 		i++;
 	}
+	return (1);
 }

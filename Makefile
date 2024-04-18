@@ -6,7 +6,7 @@
 #    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/18 11:14:21 by rabouzia         ###   ########.fr        #
+#    Updated: 2024/04/18 17:22:40 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,11 @@ SRC_FILES	=	main.c 							\
 				get_next_line_utils.c 			\
 				get_next_line.c 				\
 				libft.c           				\
+				libft2.c           				\
 				miscellaneous.c					\
+				parsing2.c 						\
 
-CFLAGS 		=	-Wall -Wextra  #-Werror
+CFLAGS 		=	-Wall -Wextra -Werror
 NAME		=	so_long
 NAME_MAC	=	so_long_MAC
 LIBX		=	minilibx-linux/libmlx_Linux.a
@@ -71,6 +73,5 @@ clean:
 fclean: clean
 	rm -rf *.o $(NAME) $(NAME)_debug $(NAME_MAC)
 	make -C minilibx-linux/ clean
-	make -C libft/ fclean
 
 .PHONY: all clean fclean re

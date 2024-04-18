@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking.c                                         :+:      :+:    :+:   */
+/*   libft2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 17:08:04 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 15:19:08 by rabouzia         ###   ########.fr       */
+/*   Created: 2024/04/18 16:27:14 by rabouzia          #+#    #+#             */
+/*   Updated: 2024/04/18 16:33:36 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
-	is_valid_map(char **map);
+int	ft_strstr(char *str, char *to_find)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (to_find[j] == '\0')
+		return (0);
+	while (str[i] != '\0')
 	{
-		is_an_exit();
-		extremity_wall();
-		empty_space();
-		is_p_position();
+		while (str[i + j] == to_find[j] && str[i + j] != '\0')
+			j++;
+		if (to_find[j] == '\0')
+			return (0);
+		i++;
+		j = 0;
 	}
-*/
+	return (1);
+}

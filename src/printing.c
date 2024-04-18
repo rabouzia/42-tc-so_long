@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 12:55:41 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:22:46 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ int	win_create(t_game *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (MLX_ERROR);
-	// printf("[%d] | [%d]\n", data->count.lines, data->count.columns);
 	data->win = mlx_new_window(data->mlx, data->count.lines,
 			data->count.columns, "The Legend Of Zelda");
 	if (!data->win)
 	{
-		printf("win null\n");
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 		return (MLX_ERROR);
@@ -109,8 +107,8 @@ void	put_img(t_game *d, int i, int j)
 
 void	init_img(t_game *d)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
