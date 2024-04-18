@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 11:52:06 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:53:23 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define MLX_ERROR 1
+# define MLX_ERROR 0
 # define UP 115
 # define DOWN 119
 # define LEFT 97

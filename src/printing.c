@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 12:29:52 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:55:41 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 int	win_create(t_game *data)
 {
 	data->mlx = mlx_init();
-	if (data->mlx == NULL)
-	{
-		printf("mlx null");
+	if (!data->mlx)
 		return (MLX_ERROR);
-	}
 	// printf("[%d] | [%d]\n", data->count.lines, data->count.columns);
 	data->win = mlx_new_window(data->mlx, data->count.lines,
 			data->count.columns, "The Legend Of Zelda");
-	if (data->win == NULL)
+	if (!data->win)
 	{
 		printf("win null\n");
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 		return (MLX_ERROR);
 	}
-	return (0);
+	return (1);
 }
 int	img_check(t_game *data)
 {
@@ -49,10 +46,10 @@ int	img_get(t_game *data)
 	int	h;
 	int	w;
 
-	data->img.link.down = mlx_xpm_file_to_image(data->mlx, "./img/link/link_down.xpm", &h,
-			&w);
-	data->img.link.up = mlx_xpm_file_to_image(data->mlx, "./img/link/link_up.xpm",
-			&h, &w);
+	data->img.link.down = mlx_xpm_file_to_image(data->mlx,
+			"./img/link/link_down.xpm", &h, &w);
+	data->img.link.up = mlx_xpm_file_to_image(data->mlx,
+			"./img/link/link_up.xpm", &h, &w);
 	data->img.link.right = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/link_right.xpm", &h, &w);
 	data->img.link.left = mlx_xpm_file_to_image(data->mlx,
