@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   miscellaneous.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 16:21:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 11:26:35 by rabouzia         ###   ########.fr       */
+/*   Created: 2024/04/18 11:12:20 by rabouzia          #+#    #+#             */
+/*   Updated: 2024/04/18 11:13:13 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void free_img(t_game *d)
+void	exit_w(t_game *d)
 {
-    free(d->img.link.down);
-    free(d->img.link.up);
-    free(d->img.link.left);
-    free(d->img.link.right);
-    free(d->img.link.ruby);
-    free(d->img.ruby);
-    free(d->img.exit);
-    free(d->img.floor);
-    free(d->img.wall);
-    //free(d->img.monster);
+	printf("gg poto");
+	quit_game(d);
 }
-
-void quit_game(t_game *d)
+void	exit_l(t_game *d)
 {
-	mlx_destroy_window(d->mlx, d->win);
-	mlx_destroy_display(d->mlx);
-	free_img(d);
-	free(d->mlx);
-	exit(1);
+	printf("tes nul poto");
+	quit_game(d);
 }

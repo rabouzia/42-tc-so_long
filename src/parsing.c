@@ -6,39 +6,13 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/17 17:24:53 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 11:05:44 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
-TODO You have to check if there’s a valid path in the map.
- */
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-}
-
-int	ft_dstrlen(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int	wall_check_up_down(t_game *m)
 {
@@ -136,55 +110,16 @@ int	size_checking(t_game *m)
 int	is_map_valid(t_game *m)
 {
 	if (!m->map)
-		return(ft_putstr_fd("Error\nnothing to do here", 1),0);
+		return (ft_putstr_fd("Error\n Empty map", 1), 0);
 	if (!size_checking(m))
-		return(ft_putstr_fd("Error\nwrong size", 1),0);
+		return (ft_putstr_fd("Error\nWrong size", 1), 0);
 	if (!character_checker(m))
-		return(ft_putstr_fd("Error\nwrong char", 1),0);
+		return (ft_putstr_fd("Error\nWrong char", 1), 0);
 	if (!wall_check_up_down(m))
-		return(ft_putstr_fd("Error\nwrong char up and down", 1),0);
+		return (ft_putstr_fd("Error\nWrong char up and down", 1), 0);
 	if (!wall_check_side(m))
-		return(ft_putstr_fd("Error\nwrong side char", 1), 0);
-	// if (!path_checking)
-	// 	return (0);
+		return (ft_putstr_fd("Error\nWrong side char", 1), 0);
+	// if (!check_path(m))
+	// 	return (ft_putstr_fd("Error\nNo way bro o_o", 1), 0);
 	return (1);
-}
-
-void	flood_fill(char ***map, int x, int y, t_game *game)
-{
-	if (x >= game->count.lines || x < 0 || y >= game->count.columns
-|| y < 0)
-		return ;
-	if ((*map)[x][y] == '1')
-		return ;
-	(*map)[x][y] = '1';
-	flood_fill(map, x + 1, y, game);
-	flood_fill(map, x, y + 1, game);
-	flood_fill(map, x - 1, y, game);
-	flood_fill(map, x, y - 1, game);
-}
-
-static int    find_path_exit(char **matrix, int i, int j, char from)
-{
-    int    find;
-
-    find = 0;
-    matrix[i][j] = '*';
-    if (matrix[i][j + 1] == 'E')
-        return (1);
-    if (matrix[i][j - 1] == 'E')
-        return (1);
-    if (matrix[i + 1][j] == 'E')
-        return (1);
-    if (matrix[i - 1][j] == 'E')
-        return (1);
-    if (ft_strchr("0C", matrix[i][j + 1]) && from != 'R')
-        find += find_path_exit(matrix, i, j + 1, 'L');
-    if (ft_strchr("0C", matrix[i][j - 1]) && from != 'L')
-        find += find_path_exit(matrix, i, j - 1, 'R');
-    if (ft_strchr("0C", matrix[i + 1][j]) && from != 'B')
-        find += find_path_exit(matrix, i + 1, j, 'T');
-    if (ft_strchr("0C", matrix[i - 1][j]) && from != 'T')
-        find += find_path_exit(matrix, i - 1, j, 'B');
-    return (find);
 }

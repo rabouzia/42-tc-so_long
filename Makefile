@@ -6,18 +6,20 @@
 #    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/17 16:24:40 by rabouzia         ###   ########.fr        #
+#    Updated: 2024/04/18 11:14:21 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_FILES	=	main.c 					\
-				get_next_line.c 		\
-				get_next_line_utils.c 	\
-				parsing.c				\
-				printing.c 				\
-				init_var.c 				\
-				move.c					\
-				free.c 					\
+SRC_FILES	=	main.c 							\
+				parsing.c						\
+				printing.c 						\
+				init_var.c 						\
+				move.c							\
+				free.c 							\
+				get_next_line_utils.c 			\
+				get_next_line.c 				\
+				libft.c           				\
+				miscellaneous.c					\
 
 CFLAGS 		=	-Wall -Wextra  #-Werror
 NAME		=	so_long
