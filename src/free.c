@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:21:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/17 16:32:29 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 00:41:11 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void free_img(t_game *d)
 {
-    free(d->img.link);
+    free(d->img.link.down);
+    free(d->img.link.up);
+    free(d->img.link.left);
+    free(d->img.link.right);
+    free(d->img.link.ruby);
     free(d->img.ruby);
     free(d->img.exit);
     free(d->img.floor);

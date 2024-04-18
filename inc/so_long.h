@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/17 16:24:02 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 00:38:31 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,23 @@ typedef struct s_map_cpt
 	int			columns;
 }				t_map_cpt;
 
+typedef struct s_link
+{
+	void *up;
+	void *down;
+	void *left;
+	void *right;
+	void *ruby;
+}	way;
+
 typedef struct s_sprite
 {
-	void *link;  // P
-	void *exit;  // E
-	void *ruby;  // C
-	void *floor; // 0
-	void *wall;  // 1
+	way 	link;   // P
+	void *exit;  	// E
+	void *ruby;  	// C
+	void *floor;	 // 0
+	void *wall; 	 // 1
+	void *monster;
 }				t_sprite;
 
 typedef struct s_game
@@ -84,6 +94,7 @@ int				tab_size(char **tab);
 void			free_img(t_game *d);
 
 void			printtab(char **d);
+void 			quit_game(t_game *d);
 //------------------- bonus -----------------------
 
 #endif

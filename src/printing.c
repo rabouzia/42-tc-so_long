@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/17 16:33:06 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 00:42:27 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@ int	img_get(t_game *data)
 	int	h;
 	int	w;
 
-	data->img.link = mlx_xpm_file_to_image(data->mlx, "./img/link.xpm", &h, &w);
+	data->img.link.down = mlx_xpm_file_to_image(data->mlx, "./img/link.xpm", &h, &w);
+	data->img.link.up = mlx_xpm_file_to_image(data->mlx, "./img/link_up.xpm", &h, &w);
+	data->img.link.right = mlx_xpm_file_to_image(data->mlx, "./img/link_right.xpm", &h, &w);
+	data->img.link.left = mlx_xpm_file_to_image(data->mlx, "./img/link_left.xpm", &h, &w);
+	data->img.link.ruby = mlx_xpm_file_to_image(data->mlx, "./img/ruby_grab.xpm", &h, &w);
+	data->img.monster = mlx_xpm_file_to_image(data->mlx, "./img/monster.xpm", &h, &w);
 	data->img.exit = mlx_xpm_file_to_image(data->mlx, "./img/exit.xpm", &h, &w);
 	data->img.ruby = mlx_xpm_file_to_image(data->mlx, "./img/ruby.xpm", &h, &w);
-	data->img.floor = mlx_xpm_file_to_image(data->mlx, "./img/floor.xpm", &h,
-			&w);
+	data->img.floor = mlx_xpm_file_to_image(data->mlx, "./img/floor.xpm", &h,&w);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx, "./img/wall.xpm", &h, &w);
-	if (!data->img.wall || !data->img.ruby || !data->img.link || !data->img.exit
+	if (!data->img.wall || !data->img.ruby || !data->img.link.down || !data->img.exit
 		|| !data->img.floor)
 	{
 		printf("err\n");
@@ -50,7 +54,7 @@ int	img_get(t_game *data)
 
 void	put_link(t_game *d)
 {
-	mlx_put_image_to_window(d->mlx, d->win, d->img.link, d->pos.x * 64, d->pos.y
+	mlx_put_image_to_window(d->mlx, d->win, d->img.link.down, d->pos.x * 64, d->pos.y
 		* 64);
 }
 
@@ -64,6 +68,8 @@ void	put_img(t_game *d, int i, int j)
 		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
 	else if (d->map[i][j] == '1')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.wall, j * 64, i * 64);
+	else if (d->map[i][j] == 'M')
+		mlx_put_image_to_window(d->mlx, d->win, d->img.monster, j * 64, i * 64);
 	else if (d->map[i][j] == 'P')
 	{
 		d->pos.x = j;
