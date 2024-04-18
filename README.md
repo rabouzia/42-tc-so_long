@@ -15,3 +15,5 @@ Linux :
 
 
 ![Screenshot from 2024-04-18 12-37-15](https://github.com/rabouzia/42-tc-so_long/assets/54402804/10832542-93e7-4c40-aafa-7d4175a5ccd8)
+
+Merci @tulipe_soyeuse pour le makefile qui marche sur mac
