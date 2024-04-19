@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:41:53 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 20:12:09 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/19 21:24:43 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static size_t	get_digits(int n)
 	return (i);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char		*str_num;
 	size_t		digits;
@@ -112,7 +112,8 @@ char			*ft_itoa(int n)
 		num *= -1;
 		digits++;
 	}
-	if (!(str_num = (char *)malloc(sizeof(char) * (digits + 1))))
+	str_num = (char *)calloc(sizeof(char), (digits + 1));
+	if (!str_num)
 		return (NULL);
 	*(str_num + digits) = 0;
 	while (digits--)
@@ -123,6 +124,12 @@ char			*ft_itoa(int n)
 	if (n < 0)
 		*(str_num + 0) = '-';
 	return (str_num);
+}
+void	step_counter(t_game *d)
+{
+	d->step2 = ft_itoa(d->steps);
+	if (!mlx_string_put(d->mlx, d->win, 64, 64, 0xFFFFFF, d->step2))
+		free(d->step2);
 }
 
 int	input(int key, t_game *data)
@@ -143,8 +150,6 @@ int	input(int key, t_game *data)
 	if (n)
 		init_img(data);
 	data->steps++;
-	if(!mlx_string_put(data->mlx, data->win, 64, 64, 0xFFFFFF , ft_itoa(data->steps)))
-		return 0;
-	printf("%d pas\n",data->steps);
+	step_counter(data);
 	return (1);
 }

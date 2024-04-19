@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"so_long.h": "c",
-		"stddef.h": "c"
+		"stddef.h": "c",
+		"*.tcc": "c"
 	}
 }

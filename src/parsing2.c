@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:23:18 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 16:58:13 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/19 22:10:25 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,45 @@ int	is_good(char c)
 	return (0);
 }
 
-void	flood_fill(char ***map, int x, int y, t_game *game)
+void	mid_check(char **copy, t_game *m)
 {
-	if (x >= game->count.lines || x < 0 || y >= game->count.columns
-		|| y < 0)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (copy[i])
+	{
+		j = 0;
+		while (copy[i][j])
+		{
+			if (copy[i][j] != '0' && copy[i][j] != '1')
+			{
+				free_map(copy);
+				close(m->fd);
+				quit_esc(m);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+int	check_path(t_game *m)
+{
+	flood_fill(&m->map, m->pos.x, m->pos.y, m);
+	mid_check(m->map, m);
+	return (1);
+}
+
+void	flood_fill(char ***map, int x, int y, t_game *m)
+{
+	if (x >= m->count.lines || x < 0 || y >= m->count.columns || y < 0)
 		return ;
 	if ((*map)[x][y] == '1')
 		return ;
 	(*map)[x][y] = '1';
-	flood_fill(map, x + 1, y, game);
-	flood_fill(map, x, y + 1, game);
-	flood_fill(map, x - 1, y, game);
-	flood_fill(map, x, y - 1, game);
+	flood_fill(map, x + 1, y, m);
+	flood_fill(map, x, y + 1, m);
+	flood_fill(map, x - 1, y, m);
+	flood_fill(map, x, y - 1, m);
 }
-

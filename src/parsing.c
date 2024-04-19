@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 18:43:49 by ramzerk          ###   ########.fr       */
+/*   Updated: 2024/04/19 22:09:22 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,25 @@ int	size_checking(t_game *m)
 	return (1);
 }
 
+int	return_map_error(char *err, t_game *d)
+{
+	free_map(d->map);
+	return (ft_putstr_fd(err, 1), 0);
+}
+
 int	is_map_valid(t_game *m)
 {
 	if (!m->map || !(*m->map))
-	{
-		free(m->map);
-		return (ft_putstr_fd("Error\n Empty map", 1), 0);
-	}
+		return (return_map_error("Error\n Empty map\n", m), 0);
 	if (!size_checking(m)) // leak
-		return (ft_putstr_fd("Error\nWrong size", 1), 0);
-	if (!character_checker(m)) // leak
-		return (ft_putstr_fd("Error\nWrong char", 1), 0);
-	if (!wall_check_up_down(m)) // leak
-		return (ft_putstr_fd("Error\nWrong char up and down", 1), 0);
-	if (!wall_check_side(m)) // leak
-		return (ft_putstr_fd("Error\nWrong side char", 1), 0);
-	// if (!check_path(m))
-	// 	return (ft_putstr_fd("Error\nNo way bro o_o", 1), 0);
+		return (return_map_error("Error\nWrong size\n", m), 0);
+	if (!character_checker(m))
+		return (return_map_error("Error\nWrong char\n", m), 0);
+	if (!wall_check_up_down(m))
+		return (return_map_error("Error\nWrong char up and down\n", m), 0);
+	if (!wall_check_side(m))
+		return (return_map_error("Error\nWrong side char\n", m), 0);
+	if (!check_path(m))
+		return (return_map_error("Error\nNo way bro o_o", m), 0);
 	return (1);
 }

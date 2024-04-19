@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/18 15:22:46 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:52:14 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void	put_link(t_game *d)
 
 void	put_img(t_game *d, int i, int j)
 {
-	if (d->map[i][j] == 'E')
+	if (d->map[i][j] == 'E' && d->count.ruby == 0)
 		mlx_put_image_to_window(d->mlx, d->win, d->img.exit, j * 64, i * 64);
 	else if (d->map[i][j] == 'C')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.ruby, j * 64, i * 64);
-	else if (d->map[i][j] == '0')
+	else if (d->map[i][j] == '0' || (d->map[i][j] == 'E' && d->count.ruby != 0))
 		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
 	else if (d->map[i][j] == '1')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.wall, j * 64, i * 64);
