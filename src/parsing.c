@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 16:36:09 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:43:49 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,9 @@ int	character_checker(t_game *m)
 int	size_checking(t_game *m)
 {
 	int	x;
-	int	y;
-	int	res;
 	int	i;
 
 	x = ft_strlen(m->map[0]);
-	y = ft_dstrlen(m->map);
-	res = 0;
 	i = 0;
 	while (m->map[i] != NULL)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ramzerk <ramzerk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:41:53 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/18 17:31:26 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:12:09 by ramzerk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,42 @@ int	manage_up_down(t_game *d, int bool)
 	return (1);
 }
 
+static size_t	get_digits(int n)
+{
+	size_t	i;
+
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
+
+char			*ft_itoa(int n)
+{
+	char		*str_num;
+	size_t		digits;
+	long int	num;
+
+	num = n;
+	digits = get_digits(n);
+	if (n < 0)
+	{
+		num *= -1;
+		digits++;
+	}
+	if (!(str_num = (char *)malloc(sizeof(char) * (digits + 1))))
+		return (NULL);
+	*(str_num + digits) = 0;
+	while (digits--)
+	{
+		*(str_num + digits) = num % 10 + '0';
+		num = num / 10;
+	}
+	if (n < 0)
+		*(str_num + 0) = '-';
+	return (str_num);
+}
+
 int	input(int key, t_game *data)
 {
 	int	n;
@@ -107,7 +143,8 @@ int	input(int key, t_game *data)
 	if (n)
 		init_img(data);
 	data->steps++;
-	mlx_string_put(data->mlx, data->win, 64, 64, 0x00FF00 , ft_);
+	if(!mlx_string_put(data->mlx, data->win, 64, 64, 0xFFFFFF , ft_itoa(data->steps)))
+		return 0;
 	printf("%d pas\n",data->steps);
 	return (1);
 }
