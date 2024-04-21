@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:15 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 21:19:30 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 22:22:27 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	main(int ac, char **av)
 		return (0);
 	bzero(&data, sizeof(t_game));
 	if (!read_ber(&data, av[1]))
-		return (0);
-	if (!img_get(&data))
 		return (0);
 	if (!init_var(&data))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 21:44:49 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 22:20:32 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,24 @@ int	win_create(t_game *data)
 	return (1);
 }
 
-int	img_get1(t_game *data)
+int	img_check(t_game *data)
+{
+	if (!data->img.wall || !data->img.ruby || !data->img.link.down
+		|| !data->img.exit || !data->img.floor || !data->img.link.ruby
+		|| !data->img.link.left || !data->img.link.right || !data->img.monster)
+	{
+		printf("err\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	img_get(t_game *data)
 {
 	int	h;
 	int	w;
 
+	// printf("%p \n", data->mlx);
 	data->img.link.down = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/link_down.xpm", &h, &w);
 	data->img.link.up = mlx_xpm_file_to_image(data->mlx,
@@ -41,13 +54,6 @@ int	img_get1(t_game *data)
 			"./img/link/link_right.xpm", &h, &w);
 	data->img.link.left = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/link_left.xpm", &h, &w);
-	return (1);
-}
-int	img_get2(t_game *data)
-{
-	int	h;
-	int	w;
-
 	data->img.link.ruby = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/ruby_grab.xpm", &h, &w);
 	data->img.monster = mlx_xpm_file_to_image(data->mlx, "./img/monster.xpm",
@@ -57,16 +63,11 @@ int	img_get2(t_game *data)
 	data->img.floor = mlx_xpm_file_to_image(data->mlx, "./img/floor.xpm", &h,
 			&w);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx, "./img/wall.xpm", &h, &w);
-	return (1);
-}
-int	img_get(t_game *data)
-{
-	if (!img_get1(data))
-		return (0);
-	if (!img_get2(data))
+	if (!img_check(data))
 		return (0);
 	return (1);
 }
+
 void	put_link(t_game *d)
 {
 	if (d->sp == 0)
