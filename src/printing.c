@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/19 21:52:14 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 21:44:49 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,8 @@ int	win_create(t_game *data)
 	}
 	return (1);
 }
-int	img_check(t_game *data)
-{
-	if (!data->img.wall || !data->img.ruby || !data->img.link.down
-		|| !data->img.exit || !data->img.floor || !data->img.link.ruby
-		|| !data->img.link.left || !data->img.link.right || !data->img.link.up)
-	{
-		printf("err\n");
-		return (0);
-	}
-	return (1);
-}
 
-int	img_get(t_game *data)
+int	img_get1(t_game *data)
 {
 	int	h;
 	int	w;
@@ -52,6 +41,13 @@ int	img_get(t_game *data)
 			"./img/link/link_right.xpm", &h, &w);
 	data->img.link.left = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/link_left.xpm", &h, &w);
+	return (1);
+}
+int	img_get2(t_game *data)
+{
+	int	h;
+	int	w;
+
 	data->img.link.ruby = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/ruby_grab.xpm", &h, &w);
 	data->img.monster = mlx_xpm_file_to_image(data->mlx, "./img/monster.xpm",
@@ -61,11 +57,16 @@ int	img_get(t_game *data)
 	data->img.floor = mlx_xpm_file_to_image(data->mlx, "./img/floor.xpm", &h,
 			&w);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx, "./img/wall.xpm", &h, &w);
-	if (!img_check(data))
+	return (1);
+}
+int	img_get(t_game *data)
+{
+	if (!img_get1(data))
+		return (0);
+	if (!img_get2(data))
 		return (0);
 	return (1);
 }
-
 void	put_link(t_game *d)
 {
 	if (d->sp == 0)
@@ -87,11 +88,11 @@ void	put_link(t_game *d)
 
 void	put_img(t_game *d, int i, int j)
 {
-	if (d->map[i][j] == 'E' && d->count.ruby == 0)
+	if (d->map[i][j] == 'E')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.exit, j * 64, i * 64);
 	else if (d->map[i][j] == 'C')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.ruby, j * 64, i * 64);
-	else if (d->map[i][j] == '0' || (d->map[i][j] == 'E' && d->count.ruby != 0))
+	else if (d->map[i][j] == '0')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
 	else if (d->map[i][j] == '1')
 		mlx_put_image_to_window(d->mlx, d->win, d->img.wall, j * 64, i * 64);

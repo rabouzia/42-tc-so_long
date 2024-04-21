@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:54:36 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/19 21:23:26 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:45:42 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strdup(char *src)
 
 	if (!src)
 		return (NULL);
-	r = (char *)calloc(sizeof(char), (ft_strlen(src) + 1));
+	r = malloc(sizeof(char) * (ft_strlen(src) + 1));
 	if (!r)
 		return (NULL);
 	i = 0;
@@ -70,7 +70,7 @@ char	*for_strjoin(char *s1, char *s2)
 	j = -1;
 	if (!s1)
 		return (ft_strdup(s2));
-	str = (char *)calloc(sizeof(char), (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = -1;

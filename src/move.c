@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:41:53 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/19 21:24:43 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:42:50 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char	*ft_itoa(int n)
 		num *= -1;
 		digits++;
 	}
-	str_num = (char *)calloc(sizeof(char), (digits + 1));
+	str_num = (char *)ft_calloc(sizeof(char), (digits + 1));
 	if (!str_num)
 		return (NULL);
 	*(str_num + digits) = 0;

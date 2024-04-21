@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/19 22:09:22 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:19:30 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	character_checker(t_game *m)
 		j = 0;
 		while (m->map[i][j])
 		{
-			if (!is_good(m->map[i][j]))
+			if (!is_good(m->map[i][j], i, j, m))
 				return (0);
 			j++;
 		}
@@ -103,6 +103,6 @@ int	is_map_valid(t_game *m)
 	if (!wall_check_side(m))
 		return (return_map_error("Error\nWrong side char\n", m), 0);
 	if (!check_path(m))
-		return (return_map_error("Error\nNo way bro o_o", m), 0);
+		return (return_map_error("Error\nNo way bro o_o", m));
 	return (1);
 }

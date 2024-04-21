@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:05:14 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/19 21:32:19 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:43:45 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 int	init_var(t_game *d)
 {
+	// bzero(d, sizeof(t_game));
 	d->pos.x = 0;
 	d->pos.y = 0;
 	d->steps = 0;
 	d->fd = 0;
 	d->sp = 0;
-	d->count.ruby = ft_strchr_count(d->map, 'C');
-	d->count.lines = 64 * (ft_strlen(d->map[0]));
-	d->count.columns = 64 * ft_dstrlen(d->map);
-	d->count.exit = ft_strchr_count(d->map, 'E');
-	d->count.player = ft_strchr_count(d->map, 'P');
-	if (d->count.exit != 1 || d->count.player != 1)
-		return (ft_putstr_fd("Error\n Not enough or Too much E or P\n", 1), 0);
+	// d->map = NULL;
+	d->mlx = NULL;
 	return (1);
 }
 int	check_extension(char *ber)
@@ -35,11 +31,11 @@ int	check_extension(char *ber)
 	return (1);
 }
 
-int nb_ligne(char *file)
+int	nb_ligne(char *file)
 {
-	int fd;
-	int i;
-	char *ligne;
+	int		fd;
+	int		i;
+	char	*ligne;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -49,10 +45,11 @@ int nb_ligne(char *file)
 	{
 		ligne = get_next_line(fd);
 		if (!ligne)
-			break;
+			break ;
+		free(ligne);
 		i++;
 	}
-	close (fd);
+	close(fd);
 	return (i);
 }
 
@@ -67,17 +64,18 @@ int	read_ber(t_game *data, char *ber)
 	i = 0;
 	j = nb_ligne(ber);
 	data->fd = open(ber, O_RDONLY, 0664);
-	data->map = calloc(j + 1, sizeof(char *));
+	data->map = ft_calloc(j + 1, sizeof(char *));
 	while (1)
 	{
 		line = get_next_line(data->fd);
 		if (!line)
-			break;
+			break ;
 		data->map[i] = ft_strdup(line);
 		if (!data->map[i])
 			break ;
 		free(line);
 		i++;
 	}
+	init_init(data);
 	return (1);
 }

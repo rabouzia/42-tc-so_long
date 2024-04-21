@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:21:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/19 21:20:36 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:53:49 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_map(char **map)
 {
 	int	i;
 
+	if (!map)
+		return ;
 	i = 0;
 	while (map[i])
 	{
@@ -24,8 +26,6 @@ void	free_map(char **map)
 		i++;
 	}
 	free(map);
-	// if (map)
-	// 	free(map);
 }
 
 void	free_img(t_game *d)

@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/19 21:33:53 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:04:20 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include "../minilibx-linux/mlx.h"
 # include "get_next_line.h"
 # include <X11/keysym.h>
+# include <limits.h>
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <strings.h>
 # include <unistd.h>
 
 # define MLX_ERROR 0
@@ -83,10 +85,11 @@ int				input(int key, t_game *data);
 
 //---------- parsing ------------
 
-int				is_good(char c);
+int				is_good(char c, int i, int j, t_game *map);
 int				check_path(t_game *game);
-void			flood_fill(char ***map, int x, int y, t_game *game);
+void			flood_fill(char **map, int x, int y, t_game *game);
 void			mid_check(char **copy, t_game *game);
+int				init_init(t_game *data);
 
 //---------- printing -----------
 
@@ -119,8 +122,7 @@ void			ft_putstr_fd(char *s, int fd);
 int				ft_dstrlen(char **str);
 void			printtab(char **d);
 int				ft_strstr(char *str, char *to_find);
-
+void			*ft_calloc(size_t n, size_t s);
 //------------------- bonus -----------------------
-
 
 #endif
