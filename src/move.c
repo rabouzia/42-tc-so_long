@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:41:53 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/24 15:15:31 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:04:47 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	manage_up_down(t_game *d, int bool)
 void	step_counter(t_game *d)
 {
 	d->step2 = ft_itoa(d->steps);
+	put_img(d, 0, 1);
 	if (!mlx_string_put(d->mlx, d->win, 64, 64, 0xFFFFFF, d->step2))
 		free(d->step2);
 }
