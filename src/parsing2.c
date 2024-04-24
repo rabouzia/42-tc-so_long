@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:23:18 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 20:31:25 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:59:51 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	**ft_copy(char **map, t_game *game)
 	i = 0;
 	copied = ft_calloc(sizeof(char *), tab_size(map) + 1);
 	if (!copied)
-	{	
+	{
 		free_map(copied);
 		quit_esc(game);
 		return (NULL);
@@ -111,7 +111,8 @@ int	init_init(t_game *data)
 	data->count.columns = 64 * ft_dstrlen(data->map);
 	data->count.exit = ft_strchr_count(data->map, 'E');
 	data->count.player = ft_strchr_count(data->map, 'P');
-	if (data->count.exit != 1 || data->count.player != 1)
-		return (ft_putstr_fd("Error\n Not enough or Too much E or P\n", 1), 0);
+	if (data->count.exit != 1 || data->count.player != 1
+		|| data->count.ruby < 1)
+		return (return_map_error("Error\n C, P or M\n", data), 0);
 	return (1);
 }

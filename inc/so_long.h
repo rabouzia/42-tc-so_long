@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 20:04:20 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:50:38 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_game
 	void		*win;
 	t_sprite	img;
 	int			sp;
+	void		*tab[11];
 	char		**map;
 	t_pos		pos;
 	t_map_cpt	count;
@@ -90,6 +91,7 @@ int				check_path(t_game *game);
 void			flood_fill(char **map, int x, int y, t_game *game);
 void			mid_check(char **copy, t_game *game);
 int				init_init(t_game *data);
+int				return_map_error(char *err, t_game *d);
 
 //---------- printing -----------
 
@@ -114,6 +116,7 @@ int				quit_click(t_game *d);
 int				nb_ligne(char *file);
 void			free_img(t_game *d);
 void			free_map(char **map);
+int				loop_imgcheck(t_game *m);
 
 //------------ libft -------------
 

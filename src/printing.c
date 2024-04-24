@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:11:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 22:20:32 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:01:13 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,27 @@ int	win_create(t_game *data)
 
 int	img_check(t_game *data)
 {
-	if (!data->img.wall || !data->img.ruby || !data->img.link.down
-		|| !data->img.exit || !data->img.floor || !data->img.link.ruby
-		|| !data->img.link.left || !data->img.link.right || !data->img.monster)
-	{
-		printf("err\n");
-		return (0);
-	}
+	if (!data->img.link.down || !data->img.link.up || !data->img.link.left
+		|| !data->img.link.right || !data->img.link.ruby || !data->img.monster
+		|| !data->img.exit || !data->img.ruby || !data->img.floor
+		|| !data->img.wall)
+		return (loop_imgcheck(data));
 	return (1);
+}
+
+void	put_addr(t_game *m)
+{
+	m->tab[0] = m->img.link.down;
+	m->tab[1] = m->img.link.up;
+	m->tab[2] = m->img.link.right;
+	m->tab[3] = m->img.link.left;
+	m->tab[4] = m->img.link.ruby;
+	m->tab[5] = m->img.monster;
+	m->tab[6] = m->img.exit;
+	m->tab[7] = m->img.ruby;
+	m->tab[8] = m->img.floor;
+	m->tab[9] = m->img.wall;
+	m->tab[10] = NULL;
 }
 
 int	img_get(t_game *data)
@@ -45,7 +58,6 @@ int	img_get(t_game *data)
 	int	h;
 	int	w;
 
-	// printf("%p \n", data->mlx);
 	data->img.link.down = mlx_xpm_file_to_image(data->mlx,
 			"./img/link/link_down.xpm", &h, &w);
 	data->img.link.up = mlx_xpm_file_to_image(data->mlx,
@@ -63,48 +75,10 @@ int	img_get(t_game *data)
 	data->img.floor = mlx_xpm_file_to_image(data->mlx, "./img/floor.xpm", &h,
 			&w);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx, "./img/wall.xpm", &h, &w);
+	put_addr(data);
 	if (!img_check(data))
 		return (0);
 	return (1);
-}
-
-void	put_link(t_game *d)
-{
-	if (d->sp == 0)
-		mlx_put_image_to_window(d->mlx, d->win, d->img.link.down, d->pos.x * 64,
-			d->pos.y * 64);
-	if (d->sp == 1)
-		mlx_put_image_to_window(d->mlx, d->win, d->img.link.up, d->pos.x * 64,
-			d->pos.y * 64);
-	if (d->sp == 2)
-		mlx_put_image_to_window(d->mlx, d->win, d->img.link.left, d->pos.x * 64,
-			d->pos.y * 64);
-	if (d->sp == 3)
-		mlx_put_image_to_window(d->mlx, d->win, d->img.link.right, d->pos.x
-			* 64, d->pos.y * 64);
-	if (d->sp == 4)
-		mlx_put_image_to_window(d->mlx, d->win, d->img.link.ruby, d->pos.x * 64,
-			d->pos.y * 64);
-}
-
-void	put_img(t_game *d, int i, int j)
-{
-	if (d->map[i][j] == 'E')
-		mlx_put_image_to_window(d->mlx, d->win, d->img.exit, j * 64, i * 64);
-	else if (d->map[i][j] == 'C')
-		mlx_put_image_to_window(d->mlx, d->win, d->img.ruby, j * 64, i * 64);
-	else if (d->map[i][j] == '0')
-		mlx_put_image_to_window(d->mlx, d->win, d->img.floor, j * 64, i * 64);
-	else if (d->map[i][j] == '1')
-		mlx_put_image_to_window(d->mlx, d->win, d->img.wall, j * 64, i * 64);
-	else if (d->map[i][j] == 'M')
-		mlx_put_image_to_window(d->mlx, d->win, d->img.monster, j * 64, i * 64);
-	else if (d->map[i][j] == 'P')
-	{
-		d->pos.x = j;
-		d->pos.y = i;
-		put_link(d);
-	}
 }
 
 void	init_img(t_game *d)

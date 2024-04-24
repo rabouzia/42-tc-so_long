@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:21:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 19:53:49 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:59:07 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void	free_img(t_game *d)
 
 void	quit_esc(t_game *d)
 {
-	// free(d->step2);
 	if (d)
-		free_img(d);
+		loop_imgcheck(d);
 	if (d->win)
 		mlx_destroy_window(d->mlx, d->win);
 	if (d->mlx)
@@ -61,9 +60,9 @@ void	quit_esc(t_game *d)
 		free_map(d->map);
 	exit(1);
 }
+
 int	quit_click(t_game *d)
 {
-	// free(d->step2);
 	free_img(d);
 	if (d->win)
 		mlx_destroy_window(d->mlx, d->win);

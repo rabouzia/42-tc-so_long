@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:05:14 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/21 20:43:45 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:58:39 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 int	init_var(t_game *d)
 {
-	// bzero(d, sizeof(t_game));
 	d->pos.x = 0;
 	d->pos.y = 0;
 	d->steps = 0;
 	d->fd = 0;
 	d->sp = 0;
-	// d->map = NULL;
 	d->mlx = NULL;
 	return (1);
 }
+
 int	check_extension(char *ber)
 {
 	if (ft_strstr(ber, ".ber"))
@@ -76,6 +75,7 @@ int	read_ber(t_game *data, char *ber)
 		free(line);
 		i++;
 	}
-	init_init(data);
+	if (!init_init(data))
+		return (0);
 	return (1);
 }

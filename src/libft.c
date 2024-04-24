@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:55:19 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 19:55:33 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:01:36 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@ int	ft_dstrlen(char **str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-void	printtab(char **d)
-{
-	int	i;
-
-	i = 0;
-	while (d[i])
-	{
-		printf("%s\n", d[i]);
-		i++;
-	}
-	printf("\n");
 }
 
 int	tab_size(char **tab)

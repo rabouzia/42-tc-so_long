@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/21 20:19:30 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:13:41 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ int	is_map_valid(t_game *m)
 {
 	if (!m->map || !(*m->map))
 		return (return_map_error("Error\n Empty map\n", m), 0);
-	if (!size_checking(m)) // leak
+	if ((m->count.lines < 3 || m->count.columns < 5))
+		return (return_map_error("Error\n Too Small", m), 0);
+	if (!size_checking(m))
 		return (return_map_error("Error\nWrong size\n", m), 0);
 	if (!character_checker(m))
 		return (return_map_error("Error\nWrong char\n", m), 0);
@@ -103,6 +105,6 @@ int	is_map_valid(t_game *m)
 	if (!wall_check_side(m))
 		return (return_map_error("Error\nWrong side char\n", m), 0);
 	if (!check_path(m))
-		return (return_map_error("Error\nNo way bro o_o", m));
+		return (return_map_error("Error\nNo way bro o_o\n", m));
 	return (1);
 }

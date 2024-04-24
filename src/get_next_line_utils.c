@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:54:36 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/21 19:45:42 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:02:02 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_strlen(char *str)
 void	*ft_memchr(const char *str, int c)
 {
 	unsigned char	*res;
+
 	res = (unsigned char *)str;
 	while (*res)
 	{
