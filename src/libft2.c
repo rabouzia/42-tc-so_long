@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:27:14 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/24 15:01:48 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:14:44 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ void	*ft_calloc(size_t n, size_t s)
 		i++;
 	}
 	return ((void *)str);
+}
+
+void	ft_putstr(char *str)
+{
+	write(1, str, ft_strlen(str));
 }

@@ -6,7 +6,7 @@
 #    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/18 17:22:40 by rabouzia         ###   ########.fr        #
+#    Updated: 2024/04/24 15:17:27 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC_FILES	=	main.c 							\
 				libft.c           				\
 				libft2.c           				\
 				miscellaneous.c					\
-				parsing2.c 						\
+				parsing_utils.c 				\
+				itoa.c			 				\
+
 
 CFLAGS 		=	-Wall -Wextra -Werror
 NAME		=	so_long

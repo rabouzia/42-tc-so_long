@@ -6,16 +6,11 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:12:20 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/24 15:01:10 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:15:22 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_putstr(char *str)
-{
-	write(1, str, ft_strlen(str));
-}
 
 void	exit_w(t_game *d)
 {

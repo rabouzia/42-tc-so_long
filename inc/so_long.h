@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:33:53 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/24 14:50:38 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:14:53 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,21 +111,26 @@ void			exit_w(t_game *d);
 int				read_ber(t_game *data, char *ber);
 int				init_var(t_game *d);
 int				tab_size(char **tab);
-void			quit_esc(t_game *d);
-int				quit_click(t_game *d);
 int				nb_ligne(char *file);
+
+//------------ freezer -------------
+
 void			free_img(t_game *d);
-void			free_map(char **map);
 int				loop_imgcheck(t_game *m);
+void			free_map(char **map);
+int				quit_click(t_game *d);
+void			quit_esc(t_game *d);
 
 //------------ libft -------------
 
+char			*ft_itoa(int n);
 int				ft_strchr_count(char **str, char c);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_dstrlen(char **str);
 void			printtab(char **d);
 int				ft_strstr(char *str, char *to_find);
 void			*ft_calloc(size_t n, size_t s);
+void			ft_putstr(char *str);
 //------------------- bonus -----------------------
 
 #endif

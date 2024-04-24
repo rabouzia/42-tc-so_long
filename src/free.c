@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:21:21 by rabouzia          #+#    #+#             */
-/*   Updated: 2024/04/24 14:59:07 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:16:33 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,10 @@ int	quit_click(t_game *d)
 	free_map(d->map);
 	exit(1);
 	return (0);
+}
+
+int	return_map_error(char *err, t_game *d)
+{
+	free_map(d->map);
+	return (ft_putstr_fd(err, 1), 0);
 }
