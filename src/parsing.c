@@ -6,7 +6,7 @@
 /*   By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:59:17 by ramzerk           #+#    #+#             */
-/*   Updated: 2024/04/24 15:57:35 by rabouzia         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:46:13 by rabouzia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	is_map_valid(t_game *m)
 		return (return_map_error("Error\n Empty map\n", m), 0);
 	if ((m->count.lines / 64 < 5) && m->count.columns / 64 < 5)
 		return (return_map_error("Error\n Too small\n", m), 0);
-	if ((m->count.lines  / 64 > 21) && m->count.columns  / 64 > 40)
+	if ((m->count.lines / 64 > 21) && m->count.columns / 64 > 40)
 		return (return_map_error("Error\n Too BIG\n", m), 0);
 	if (!size_checking(m))
 		return (return_map_error("Error\nWrong size\n", m), 0);
