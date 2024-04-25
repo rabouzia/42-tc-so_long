@@ -6,7 +6,7 @@
 #    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/24 15:17:27 by rabouzia         ###   ########.fr        #
+#    Updated: 2024/04/25 13:47:25 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ SRC_FILES	=	main.c 							\
 				free.c 							\
 				get_next_line_utils.c 			\
 				get_next_line.c 				\
-				libft.c           				\
-				libft2.c           				\
+				libft/libft.c           		\
+				libft/libft2.c           		\
 				miscellaneous.c					\
 				parsing_utils.c 				\
-				itoa.c			 				\
+				libft/itoa.c			 				\
 
 
 CFLAGS 		=	-Wall -Wextra -Werror
