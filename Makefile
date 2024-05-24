@@ -6,7 +6,7 @@
 #    By: rabouzia <rabouzia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 22:16:25 by ramzerk           #+#    #+#              #
-#    Updated: 2024/04/25 13:47:25 by rabouzia         ###   ########.fr        #
+#    Updated: 2024/04/25 14:02:42 by rabouzia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ $(LIBX):
 
 $(OBJ_DIR):
 	mkdir obj
+	mkdir obj/libft
 
 clean:
 	rm -rf $(OBJS)
